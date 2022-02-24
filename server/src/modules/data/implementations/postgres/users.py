@@ -1,7 +1,5 @@
 import datetime
 
-from sqlalchemy.dialects.postgresql import JSON
-
 from main import db
 from modules.data.abstract import users
 
@@ -21,7 +19,7 @@ class User(db.Model, users.User):
   role = db.Column(db.String(30))
   accepted_terms_at = db.Column(db.DateTime)
   domain_type = db.Column(db.String(30))
-  notifications = db.Column(JSON)
+  notifications = db.Column(db.JSON)
 
   @staticmethod
   def get_by_id(id):

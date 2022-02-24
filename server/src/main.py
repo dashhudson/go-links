@@ -7,7 +7,7 @@ import traceback
 import jinja2
 from flask import Flask, send_from_directory, redirect, render_template, request, jsonify, session
 from flask_login import LoginManager, current_user, logout_user
-from flask_sqlalchemy import SQLAlchemy as _BaseSQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, upgrade as upgrade_db
 from flask_wtf.csrf import generate_csrf
 import sentry_sdk
@@ -33,24 +33,10 @@ def init_app_without_routes(disable_csrf=False):
 
   app.secret_key = config.get_config()['sessions_secret']
 
-  app.config['SQLALCHEMY_DATABASE_URI'] = config.get_config()['postgres']['url']
-  if app.config['SQLALCHEMY_DATABASE_URI'].startswith('postgres://'):
-    # SQLAlchemy deprecated the `postgres` dialect, but it's still used by Heroku Postgres:
-    # https://help.heroku.com/ZKNTJQSK/why-is-sqlalchemy-1-4-x-not-connecting-to-heroku-postgres
-    app.config['SQLALCHEMY_DATABASE_URI'] = app.config['SQLALCHEMY_DATABASE_URI'].replace('postgres://',
-                                                                                          'postgresql://',
-                                                                                          1)
-
-  if config.get_config()['postgres'].get('commercial_url'):
-    app.config['SQLALCHEMY_BINDS'] = {'commercial': config.get_config()['postgres']['commercial_url']}
-
+  app.config['SQLALCHEMY_DATABASE_URI'] = config.get_config()['mysql']['url']
   app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
   global db
-  class SQLAlchemy(_BaseSQLAlchemy):
-    def apply_pool_defaults(self, app, options):
-        super(SQLAlchemy, self).apply_pool_defaults(app, options)
-        options["pool_pre_ping"] = True
   db = SQLAlchemy(app)
 
   from modules.base import authentication
