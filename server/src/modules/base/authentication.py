@@ -32,6 +32,10 @@ def login_test_user():
     session['last_signin'] = datetime.datetime.utcnow()
 
 
+def login_tester():
+  login_user(get_or_create_user('shali@dashhudson.com', None), remember=True, force=True)
+
+
 def check_csrf():
   """Verifies one of the following is true, or aborts with 400.
 

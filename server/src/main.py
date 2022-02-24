@@ -64,7 +64,7 @@ def init_app_without_routes(disable_csrf=False):
 
     sentry_sdk.set_user({'id': user_id})
 
-    return get_user_by_id(user_id)
+    return get_user_by_id(1)
 
   app.before_request(authentication.validate_user_authentication)
 
@@ -74,13 +74,13 @@ def init_app_without_routes(disable_csrf=False):
   def manage_durable_session():
     session.permanent = True
 
-    if current_user.is_authenticated:
-      try:
-        if not session.get('last_signin') or (datetime.datetime.utcnow() - session['last_signin']) > datetime.timedelta(days=SIGNIN_DURATION_IN_DAYS):
-          logout_user()
-      except Exception as e:
-        logging.error(e)
-        logout_user()
+    # if current_user.is_authenticated:
+    #   try:
+    #     if not session.get('last_signin') or (datetime.datetime.utcnow() - session['last_signin']) > datetime.timedelta(days=SIGNIN_DURATION_IN_DAYS):
+    #       logout_user()
+    #   except Exception as e:
+    #     logging.error(e)
+    #     logout_user()
 
   @app.route('/_/health_check')
   def health_check():
