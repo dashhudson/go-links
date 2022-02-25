@@ -98,12 +98,6 @@ def get_default_namespace(org_id):
   CACHE_DURATION_IN_DAYS = 1
   default_namespace = None
 
-  try:
-    if session.get('org_default_ns_exp'):
-      default_namespace = session['org_default_ns']
-  except RuntimeError:
-    pass
-
   if not default_namespace:
     default_namespace = get_organization_config(org_id).get('default_namespace',
                                                             get_config_by_key_path(['default_namespace']) or 'go')

@@ -66,7 +66,8 @@ config = config.updateIn(['header', 'links'], (links) => links.reduce((fullLinks
 
 export const getConfig = (keyPath) => config.getIn(keyPath.split('.'))
 
-export const DEFAULT_NAMESPACE = window._trotto.defaultNamespace;
+// Backend yaml not working hard-code for now
+export const DEFAULT_NAMESPACE = 'dh';
 
 const setTitleAndFavicon = () => {
   const favicon = document.createElement('link');

@@ -123,10 +123,10 @@ export function receiveSaveResult(responseJson) {
       dispatch(setLinkCreatedOnThisPageload(responseJson));
 
       var host = 'http://' + (responseJson.namespace || DEFAULT_NAMESPACE);
-
-      if (!getState().core.get('goSupportedInCurrentSession')) {
-        host = host.replace(`http://${DEFAULT_NAMESPACE}`, getServiceBaseUrl());
-      }
+      //
+      // if (!getState().core.get('goSupportedInCurrentSession')) {
+      //   host = host.replace(`http://${DEFAULT_NAMESPACE}`, getServiceBaseUrl());
+      // }
 
       dispatch(setLinkCreationMessage(
           'good_news',
