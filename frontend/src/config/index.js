@@ -4,19 +4,19 @@ const CUSTOM_CONFIG = fromJS(window._trotto.layout);
 
 const DEFAULT_CONFIG = {
   palette: {
-    primary: '#f27e8f',
-    secondary: '#7e8ff2',
+    primary: '#d6b034',
+    secondary: '#4990e2',
     success: '#4f8a10',
-    error: '#ff0033'
+    error: '#e36042'
   },
   page: {
-    title: 'Trotto Go Links',
-    favicon: '/favicon.ico'
+    title: 'DH Links',
+    favicon: 'https://app.dashhudson.com/favicon.png'
   },
   header: {
-    title: 'Trotto',
+    title: '',
     logo: {
-      url: '/_images/snout.png',
+      url: 'https://app.dashhudson.com/img/logo-dh-color.471d2fb6.svg',
       css: {
         height: '1.6em'
       }
@@ -27,7 +27,7 @@ const DEFAULT_CONFIG = {
     ]
   },
   footer: {
-    showSourceLink: true,
+    showSourceLink: false,
     links: []
   }
 };

@@ -4,9 +4,9 @@ html, body {
 }
 
 body {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: black;
-    background-color: #f7f7f7;
+    font-family: 'Mark', helvetica neue, helvetica, arial, sans-serif;
+    color: #666;
+    background-color: #ffffff;
 }
 
 #app, #app > div {
@@ -23,14 +23,14 @@ body {
 }
 
 input {
-    color: black;
+    color: #666;
     border-radius: 3px;
     padding: 3px 5px;
 }
 
 .btn-default {
     color: white;
-    border-color: #f27e8f;
+    border-color: #ddd;
     background-color: #f27e8f;
 }
 
